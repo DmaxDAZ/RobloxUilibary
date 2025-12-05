@@ -2785,6 +2785,18 @@ function Library:Window(p)
 				DropdownSelect:Clear(n)
 			end
 
+            function New:Refresh(newList, newValue)
+                DropdownSelect:Clear(true)
+                 for _, v in ipairs(newList) do
+                  DropdownSelect:Add(v)
+             end
+             if newValue then
+              DropdownSelect:SetValue(newValue)
+             else
+             DropdownSelect:SetValue(newList[1])
+             end
+          end
+
 			return New
 		end
 
