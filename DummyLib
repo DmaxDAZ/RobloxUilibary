@@ -2787,7 +2787,7 @@ function Library:Window(p)
 
             function New:Refresh(newList, newValue)
     for _, child in ipairs(Dropdown:GetChildren()) do
-        if child.Name == "Item" and child:IsA("Frame") then
+        if child:IsA("Frame") and child.Name == "Item" then
             child:Destroy()
         end
     end
