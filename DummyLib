@@ -2786,16 +2786,27 @@ function Library:Window(p)
 			end
 
             function New:Refresh(newList, newValue)
-                DropdownSelect:Clear(true)
-                 for _, v in ipairs(newList) do
-                  DropdownSelect:Add(v)
-             end
-             if newValue then
-              DropdownSelect:SetValue(newValue)
-             else
-             DropdownSelect:SetValue(newList[1])
-             end
-          end
+    for _, child in ipairs(Dropdown:GetChildren()) do
+        if child.Name == "Item" or child:IsA("TextButton") or child:IsA("Frame") then
+            child:Destroy()
+        end
+    end
+
+    if DropdownSelect.Clear then
+        DropdownSelect:Clear(true)
+    end
+
+    for _, v in ipairs(newList) do
+        DropdownSelect:Add(v)
+    end
+
+    if newValue then
+        DropdownSelect:SetValue(newValue)
+    else
+        DropdownSelect:SetValue(newList[1])
+    end
+end
+
 
 			return New
 		end
